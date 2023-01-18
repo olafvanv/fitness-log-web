@@ -1,0 +1,33 @@
+.page-content {
+  padding: 8px 16px;
+}
+
+.app-list {
+  background-color: var(--surface-color);
+  border-radius: 12px;
+
+  .app-list-item {
+    &:not(:last-of-type) {
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 16px;
+        right: 16px;
+        height: 1px;
+        bottom: 0;
+        background-color: var(--divider-color);
+      }
+    }
+
+    i.chevron {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+  }
+}

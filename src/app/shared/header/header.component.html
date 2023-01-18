@@ -1,0 +1,33 @@
+<div class="header-top">
+  <div class="action-buttons action-buttons-left">
+    <span class="text-button"
+      *ngIf="showBackButton">
+      <i class="fa-solid fa-chevron-left"></i>
+      Back
+    </span>
+
+    <span class="text-button"
+      *ngIf="leftTextButton"
+      (click)="leftTextButton.action()">{{leftTextButton.label}}</span>
+  </div>
+
+  <div class="title">
+    <!-- <h4>{{pageTitle}}</h4> -->
+  </div>
+
+  <div class="action-buttons action-buttons-right">
+    <span class="text-button"
+      *ngIf="rightTextButton"
+      (click)="rightTextButton.action()">{{rightTextButton.label}}</span>
+    <span class="icon-button"
+      *ngIf="rightIconButton"
+      (click)="rightIconButton.action()">
+      <i [ngClass]="['fa-solid', rightIconButton.icon]"></i>
+    </span>
+  </div>
+</div>
+
+<div class="page-title"
+  *ngIf="pageTitle">
+  <h1>{{pageTitle}}</h1>
+</div>

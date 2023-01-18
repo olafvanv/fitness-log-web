@@ -1,0 +1,52 @@
+<app-header pageTitle="Workouts"
+  [showBackButton]="false"
+  [leftTextButton]="editButton"
+  [rightIconButton]="addButton"></app-header>
+
+<div class="page-content workouts-content">
+  <mat-list class="app-list">
+    <mat-list-item class="app-list-item">
+      <h4 matListItemTitle>Workout 1</h4>
+      <span matListItemLine>9 exercises</span>
+      <i class="chevron fa-solid fa-chevron-right"></i>
+    </mat-list-item>
+    <mat-list-item class="app-list-item">
+      <h4 matListItemTitle>Workout 1</h4>
+      <span matListItemLine>9 exercises</span>
+      <i class="chevron fa-solid fa-chevron-right"></i>
+    </mat-list-item>
+    <mat-list-item class="app-list-item">
+      <h4 matListItemTitle>Workout 1</h4>
+      <span matListItemLine>9 exercises</span>
+      <i class="chevron fa-solid fa-chevron-right"></i>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-list class="app-list"
+    *ngIf="(workouts$ | async)?.length else emptyState">
+    <mat-list-item class="app-list-item"
+      *ngFor="let workout of workouts$ | async">
+      <h4 matListItemTitle>{{workout.name}}</h4>
+      <span matListItemLine>{{workout.exercises.length}}</span>
+      <i class="chevron fa-solid fa-chevron-right"></i>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <div class="icon">
+        <i class="fa-solid fa-dumbbell"></i>
+      </div>
+
+      <div class="text">
+        <h4>No workouts found. Start creating one now!</h4>
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button
+          color="primary">Add workout</button>
+      </div>
+
+    </div>
+  </ng-template>
+</div>

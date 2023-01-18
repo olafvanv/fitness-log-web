@@ -1,32 +1,67 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
+@import "./scss/classes";
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$fitness-log-palette: (
+  50: #e0f2f1,
+  100: #b3e0db,
+  200: #80cbc4,
+  300: #4db6ac,
+  400: #26a69a,
+  500: #009688,
+  600: #008e80,
+  700: #008375,
+  800: #00796b,
+  900: #006858,
+  A100: #7dffe1,
+  A200: #4affd6,
+  A400: #17ffca,
+  A700: #00fcc3,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$fitness-log-primary: mat.define-palette(mat.$indigo-palette);
-$fitness-log-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$fitness-log-primary: mat.define-palette($fitness-log-palette);
+$fitness-log-accent: mat.define-palette($fitness-log-palette);
 
 // The warn palette is optional (defaults to red).
 $fitness-log-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$fitness-log-theme: mat.define-light-theme((
-  color: (
-    primary: $fitness-log-primary,
-    accent: $fitness-log-accent,
-    warn: $fitness-log-warn,
+$fitness-log-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $fitness-log-primary,
+      accent: $fitness-log-accent,
+      warn: $fitness-log-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,5 +70,39 @@ $fitness-log-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --background-color: #f7f7f7;
+  --surface-color: #ffffff;
+  --primary-color: #009688;
+  --primary-color-lighter: #b3e0db;
+  --primary-color-darker: #006858;
+  --text-color-primary: #121212;
+  --text-color-secondary: #49454e;
+  --text-color-white: #ffffff;
+  --divider-color: #e7e0ec;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  // background: mat.get-color-from-palette($fitness-log-primary, background);
+  background: var(--background-color);
+  margin: 0;
+  font-family: "SF Pro Display", "Helvetica Neue", sans-serif;
+  color: var(--text-color-primary);
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 16px 0;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
