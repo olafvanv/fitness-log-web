@@ -23,10 +23,7 @@ export class InputFieldComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit(): void {
-    console.log(this.formGroup);
     this.formControl = this.formGroup.get(this.name);
-
-    console.log(this.formControl);
   }
 
   public get showClearIcon(): boolean {
