@@ -18,6 +18,7 @@
     .title {
       flex: 1;
       text-align: center;
+      white-space: nowrap;
 
       h4 {
         margin: 0;
@@ -38,6 +39,11 @@
 
         &:active {
           color: var(--primary-color-darker);
+        }
+
+        &.disabled {
+          opacity: 0.4;
+          pointer-events: none;
         }
       }
 

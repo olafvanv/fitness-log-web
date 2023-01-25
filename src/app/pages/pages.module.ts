@@ -7,12 +7,6 @@ import { WorkoutsModule } from './workouts/workouts.module';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule,
-    WorkoutsModule,
-    HistoryModule,
-    SettingsModule,
-  ],
+  imports: [CommonModule, RouterModule, WorkoutsModule, HistoryModule, SettingsModule],
 })
 export class PagesModule {}

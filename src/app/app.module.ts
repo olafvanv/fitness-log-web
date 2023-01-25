@@ -10,14 +10,7 @@ import { BottomBarComponent } from './shared/bottom-bar/bottom-bar.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BottomBarComponent,
-    MatButtonModule,
-    PagesModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, BottomBarComponent, MatButtonModule, PagesModule],
   providers: [],
   bootstrap: [AppComponent],
 })

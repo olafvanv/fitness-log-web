@@ -28,10 +28,7 @@ export class AppComponent {
           return null;
         })
       )
-      .subscribe((data: AppRouteData | null) => {
-        this.currentRoute = data;
-        console.log(data);
-      });
+      .subscribe((data: AppRouteData | null) => (this.currentRoute = data));
   }
 
   public get pageTitle(): string | null {
@@ -41,6 +38,6 @@ export class AppComponent {
   }
 
   public get bottomNavItems(): AppRoute[] {
-    return appRoutes.filter((route) => route.data.onBottomBar);
+    return appRoutes.filter((route) => route.data?.onBottomBar);
   }
 }

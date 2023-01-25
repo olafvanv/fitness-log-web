@@ -4,8 +4,8 @@
     [routerLink]="[item.path]"
     routerLinkActive="active">
     <div class="icon-wrapper">
-      <i [ngClass]="['fa-solid', item.data.icon]"></i>
+      <i [ngClass]="['fa-solid', item.data?.icon]"></i>
     </div>
-    <div class="title">{{item.data.title}}</div>
+    <div class="title">{{item.data?.title}}</div>
   </div>
 </div>

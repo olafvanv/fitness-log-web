@@ -6,7 +6,9 @@ import { LocalStorageService } from './local-storage.service';
 export class WorkoutsService {
   private _workouts = new BehaviorSubject<IWorkout[]>([]);
 
-  constructor(private storage: LocalStorageService) {}
+  constructor(private storage: LocalStorageService) {
+    this.getWorkouts();
+  }
 
   public get workouts$(): Observable<IWorkout[]> {
     return this._workouts.asObservable();
@@ -14,6 +16,29 @@ export class WorkoutsService {
 
   public getWorkouts(): void {
     const data = this.storage.getItem<IWorkout[]>('workouts', []);
+
+    if (!data.length) {
+      data.push({
+        id: '1',
+        name: 'Functional Strength - Day 1',
+        exercises: ['1', '2'],
+      });
+      data.push({
+        id: '2',
+        name: 'Functional Strength - Day 2',
+        exercises: ['1', '2', '3', '5'],
+      });
+      data.push({
+        id: '3',
+        name: 'Functional Strength - Day 3',
+        exercises: ['1', '2', '3', '5'],
+      });
+      data.push({
+        id: '4',
+        name: 'Functional Strength - Day 4',
+        exercises: ['1', '2', '3', '5'],
+      });
+    }
     this._workouts.next(data);
   }
 
@@ -30,7 +55,7 @@ export class WorkoutsService {
     const i = workouts.findIndex((f) => f.id === workout.id);
 
     workouts.splice(i, 1);
-    this.storage.setItem('workouts', workouts);
+    // this.storage.setItem('workouts', workouts);
 
     this._workouts.next(workouts);
   }

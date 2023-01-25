@@ -1,0 +1,25 @@
+<app-header [leftTextButton]="cancelButton"
+  [rightTextButton]="saveButton"
+  [pageTitle]="'Create workout'">
+</app-header>
+
+
+<div class="content">
+  <div class="workout-form">
+    <form [formGroup]="form">
+      <app-input-field [formGroup]="form"
+        name="name"
+        label="Name">
+      </app-input-field>
+
+      <app-input-field [formGroup]="form"
+        name="notes"
+        label="Notes">
+      </app-input-field>
+    </form>
+  </div>
+
+  <div class="workout-exercises">
+    <h4>Exercises</h4>
+  </div>
+</div>

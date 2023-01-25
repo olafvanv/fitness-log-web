@@ -4,33 +4,38 @@
   [rightIconButton]="addButton"></app-header>
 
 <div class="page-content workouts-content">
-  <mat-list class="app-list">
-    <mat-list-item class="app-list-item">
-      <h4 matListItemTitle>Workout 1</h4>
-      <span matListItemLine>9 exercises</span>
-      <i class="chevron fa-solid fa-chevron-right"></i>
-    </mat-list-item>
-    <mat-list-item class="app-list-item">
-      <h4 matListItemTitle>Workout 1</h4>
-      <span matListItemLine>9 exercises</span>
-      <i class="chevron fa-solid fa-chevron-right"></i>
-    </mat-list-item>
-    <mat-list-item class="app-list-item">
-      <h4 matListItemTitle>Workout 1</h4>
-      <span matListItemLine>9 exercises</span>
-      <i class="chevron fa-solid fa-chevron-right"></i>
-    </mat-list-item>
-  </mat-list>
 
-  <mat-list class="app-list"
-    *ngIf="(workouts$ | async)?.length else emptyState">
-    <mat-list-item class="app-list-item"
-      *ngFor="let workout of workouts$ | async">
-      <h4 matListItemTitle>{{workout.name}}</h4>
-      <span matListItemLine>{{workout.exercises.length}}</span>
-      <i class="chevron fa-solid fa-chevron-right"></i>
-    </mat-list-item>
-  </mat-list>
+  <div class="page-title">
+    <h1>Workouts</h1>
+  </div>
+
+  <div class="list-wrapper"
+    *ngIf="workouts$ | async as workouts">
+
+    <mat-list class="app-list"
+      *ngIf="workouts.length else emptyState">
+      <mat-list-item class="app-list-item"
+        *ngFor="let workout of workouts"
+        [@listItem]>
+        <div class="body">
+          <div class="prefix-icon"
+            *ngIf="editMode"
+            (click)="deleteWorkout(workout)"
+            [@slideInFromLeft]>
+            <i class="fa-solid fa-trash-can delete-icon"></i>
+          </div>
+          <div class="content">
+            <h4 class="title">{{workout.name}}</h4>
+            <span class="subtitle">{{workout.exercises.length}} exercises</span>
+          </div>
+          <i class="chevron fa-solid fa-chevron-right"
+            *ngIf="!editMode"
+            [@slideInFromLeft]></i>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
 
   <ng-template #emptyState>
     <div class="empty-state">
@@ -46,7 +51,18 @@
         <button mat-raised-button
           color="primary">Add workout</button>
       </div>
-
     </div>
   </ng-template>
+</div>
+
+<div class="add-workout-overlay"
+  *ngIf="showAddWorkout"
+  [@overlay]>
+  <div class="overlay-backdrop"
+    (click)="toggleAddWorkout()"
+    [@fadeOverlay]></div>
+  <div class="overlay-container"
+    [@slideInOverlay]>
+    <app-add-workout (close)="toggleAddWorkout()"></app-add-workout>
+  </div>
 </div>

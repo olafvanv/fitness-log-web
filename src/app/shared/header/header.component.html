@@ -12,22 +12,19 @@
   </div>
 
   <div class="title">
-    <!-- <h4>{{pageTitle}}</h4> -->
+    <h4>{{pageTitle}}</h4>
   </div>
 
   <div class="action-buttons action-buttons-right">
     <span class="text-button"
       *ngIf="rightTextButton"
+      [class.disabled]="rightTextButton.disabled"
       (click)="rightTextButton.action()">{{rightTextButton.label}}</span>
     <span class="icon-button"
-      *ngIf="rightIconButton"
+      *ngIf="rightIconButton && !rightIconButton.hidden"
+      [class.disabled]="rightIconButton.disabled"
       (click)="rightIconButton.action()">
       <i [ngClass]="['fa-solid', rightIconButton.icon]"></i>
     </span>
   </div>
-</div>
-
-<div class="page-title"
-  *ngIf="pageTitle">
-  <h1>{{pageTitle}}</h1>
 </div>

@@ -1,0 +1,80 @@
+.app-list {
+  background-color: #fff;
+  border-radius: 12px;
+  margin: 8px 0;
+  .app-list-item {
+    height: 64px;
+    .body {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      .prefix-icon {
+        height: 24px;
+        width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: visible;
+
+        .delete-icon {
+          margin-left: 8px;
+          color: var(--warn-color);
+        }
+      }
+
+      .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          margin: 0 0 2px;
+        }
+        .subtitle {
+          font-size: 14px;
+          color: var(--text-color-secondary);
+        }
+      }
+    }
+
+    &:not(:last-of-type) {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        height: 1px;
+        bottom: 0;
+        background-color: var(--divider-color);
+      }
+    }
+  }
+}
+
+.add-workout-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  .overlay-backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+  }
+
+  .overlay-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 72px;
+    background-color: var(--surface-color);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+}

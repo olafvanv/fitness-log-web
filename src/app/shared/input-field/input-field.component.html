@@ -1,0 +1,33 @@
+<div class="input-field-wrapper form-field"
+  [formGroup]="formGroup">
+  <div class="input-container"
+    [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'text'">
+      <input [type]="type"
+        [placeholder]="label"
+        [formControlName]="name"
+        [disabled]="disabled"
+        [class.invalid]="isInvalid" />
+    </ng-container>
+
+    <span class="clear-button"
+      *ngIf="showClearIcon"
+      (click)="formControl?.reset()">
+      <i class="fa-solid fa-xmark-circle"></i>
+    </span>
+  </div>
+
+  <div class="input-helper-text">
+    <span class="hint-text"
+      *ngIf="!hasErrors">
+      {{hint}}
+    </span>
+
+    <span class="error-text"
+      *ngIf="hasErrors">
+      <ng-container *ngIf="formControl?.errors?.['required']">
+        {{label}} is required
+      </ng-container>
+    </span>
+  </div>
+</div>

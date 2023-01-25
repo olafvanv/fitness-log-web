@@ -34,10 +34,15 @@ export const appRoutes: AppRoute[] = [
       showPageTitle: true,
     },
   },
+  {
+    path: '',
+    redirectTo: 'workouts',
+    pathMatch: 'full',
+  },
 ];
 
 export interface AppRoute extends Route {
-  data: AppRouteData;
+  data?: AppRouteData;
 }
 
 export interface AppRouteData extends Data {
